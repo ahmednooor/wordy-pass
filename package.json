@@ -1,0 +1,29 @@
+{
+  "name": "wordypass",
+  "version": "1.1.0",
+  "description": "Word-Based Password Generator",
+  "main": "wordypass.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmednooor/wordypass.git"
+  },
+  "keywords": [
+    "word-based",
+    "password",
+    "generator",
+    "readable"
+  ],
+  "author": "Ahmed Noor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahmednooor/wordypass/issues"
+  },
+  "homepage": "https://github.com/ahmednooor/wordypass#readme",
+  "files": [
+    "wordypass.js",
+    "wordypass.min.js"
+  ]
+}
