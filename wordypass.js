@@ -1030,7 +1030,7 @@ class WordyPass {
     }
 
     getRandomInt(max) {
-        // taken from MDN
+        // taken from MDN 
         return Math.floor(Math.random() * Math.floor(max));
     }
     
