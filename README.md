@@ -3,6 +3,20 @@ Word-Based Password Generator
 
 ## [Live Version](https://ahmednooor.github.io/wordypass)
 
+### Installation
+
+> with `npm`
+
+```
+npm i wordypass --save
+```
+
+> with `yarn`
+
+```
+yarn add wordypass
+```
+
 ### Usage
 
 ```javascript

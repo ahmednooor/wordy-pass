@@ -1,5 +1,9 @@
 const WordyPass = require('./wordypass.min'); // if on nodejs
 
+// or if already installed via npm or yarn, then,
+// const WordyPass = require('wordypass');
+
+
 const wordyPass = new WordyPass();
 
 console.log(wordyPass.generate(8));
