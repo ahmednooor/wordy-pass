@@ -1,12 +1,12 @@
-# wordy-pass
+# wordypass
 Word-Based Password Generator
 
-## [Live Version](https://ahmednooor.github.io/wordy-pass)
+## [Live Version](https://ahmednooor.github.io/wordypass)
 
 ### Usage
 
 ```javascript
-const WordyPass = require('wordyPass'); // if on nodejs
+const WordyPass = require('wordypass'); // if on nodejs
 
 const wordyPass = new WordyPass();
 

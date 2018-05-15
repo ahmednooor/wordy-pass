@@ -1,4 +1,4 @@
-const WordyPass = require('./wordyPass');
+const WordyPass = require('./wordypass.min'); // if on nodejs
 
 const wordyPass = new WordyPass();
 
