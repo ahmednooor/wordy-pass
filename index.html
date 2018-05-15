@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Word-Based Password Generator">
+
+    <title>Wordy Pass</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+    
+    <style>
+        *, *:before, *:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            background: beige;
+            font-family: 'PT Mono', monospace;
+        }
+        body * {
+            font-family: 'PT Mono', monospace;
+        }
+        .main-ctr {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 24px;
+            text-align: center;
+        }
+        .main-heading {
+            text-align: center;
+            color: slateblue;
+            font-size: 24px;
+            font-weight: normal;
+        }
+        .main-heading a {
+            text-decoration: none;
+            color: slateblue;
+        }
+        .main-heading a:hover {
+            text-decoration: underline;
+        }
+        .pwlen-lbl {
+            display: block;
+            font-size: 21px;
+            text-align: center;
+        }
+        .pwlen-lbl span, .pwlen-lbl input {
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        .pwlen-lbl input {
+            width: 8ch;
+            max-width: auto;
+            margin: 0 10px;
+            padding: 8px 14px;
+            background: transparent;
+            outline: none;
+            color: slateblue;
+            font-weight: bold;
+            border: 2px solid transparent;
+            border-bottom: 2px solid slateblue;
+            font-size: 21px;
+        }
+        .pwlen-lbl input:focus {
+            outline: none;
+            border: 2px solid slateblue;
+        }
+        .gen-btn, .cpy-btn {
+            display: block;
+            outline: none;
+            background: white;
+            padding: 8px 14px;
+            font-size: 21px;
+            margin: 0 auto;
+            border: 2px solid slateblue;
+            color: slateblue;
+            cursor: pointer;
+        }
+        .cpy-btn {
+            float: right;
+            margin-top: 20px;
+            margin-bottom: -2px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .cpy-txt {
+            display: block;
+            outline: none;
+            background: transparent;
+            padding: 8px 14px;
+            font-size: 21px;
+            margin: 0 auto;
+            border: 2px solid transparent;
+            color: black;
+            float: left;
+            margin-top: 20px;
+            margin-bottom: -2px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .gen-btn:active, .cpy-btn:active {
+            background: slateblue;
+            color: white;
+        }
+        .pw-ctr {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+            border: 2px solid slateblue;
+            height: auto;
+            padding: 8px 10px;
+            font-size: 21px;
+            resize: vertical;
+            text-align: center;
+            outline: none;
+        }
+        .credit-txt {
+            font-size: 16px;
+        }
+        .credit-txt a {
+            text-decoration: none;
+            color: slateblue;
+        }
+        .credit-txt a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script src="main_es5.js"></script>
+</head>
+<body>
+    <div class="main-ctr">
+        <br />
+        <h1 class="main-heading"><a href="index.html">Word-Based Password Generator</a></h1>
+        <br />
+        <br />
+        <form id="genPwForm">
+            <label class="pwlen-lbl" for="">
+                <span>Password Length:</span>
+                <input id="pwLen" type="number" min="1" value="12">
+                <span>Characters</span>
+            </label>
+            <br />
+            <br />
+            <button id="genBtn" class="gen-btn" type="submit">Generate</button>
+        </form>
+        <p id="cpyTxt" class="cpy-txt"></p>
+        <button id="cpyBtn" class="cpy-btn">Copy</button>
+        <textarea id="pwCtr" class="pw-ctr" rows="4"></textarea>
+        <br />
+        <br />
+        <br />
+        <p class="credit-txt">Check it out on <a href="https://github.com/ahmednooor/wordy-pass" target="_blank">Github</a></p>
+    </div>
+
+    <script>
+        var cpyTxtTimeout = null;
+        document.getElementById('genPwForm').onsubmit = function(ev) {
+            ev.preventDefault();
+            var pwLen = document.getElementById('pwLen').value;
+            if (pwLen < 1 || parseInt(pwLen, 10) === NaN) {
+                pwLen = 1;
+            }
+            var password = passwordGenerator(parseInt(pwLen, 10));
+            document.getElementById('pwCtr').innerHTML = password;
+            return false;
+        };
+        document.getElementById('cpyBtn').onclick = function(ev) {
+            var textArea = document.getElementById('pwCtr');
+            textArea.select();
+            document.execCommand('copy');
+            clearTimeout(cpyTxtTimeout);
+            cpyTxtTimeout = window.setTimeout(function() {
+                document.getElementById('cpyTxt').innerHTML = '';
+            }, 3000);
+            document.getElementById('cpyTxt').innerHTML = 'Copied!';
+        }
+    </script>
+</body>
+</html>
