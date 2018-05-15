@@ -133,7 +133,7 @@
             text-decoration: underline;
         }
     </style>
-    <script src="main_es5.js"></script>
+    <script src="wordyPass.min.js"></script>
 </head>
 <body>
     <div class="main-ctr">
@@ -161,17 +161,20 @@
     </div>
 
     <script>
+        var wordyPass = new WordyPass();
         var cpyTxtTimeout = null;
+
         document.getElementById('genPwForm').onsubmit = function(ev) {
             ev.preventDefault();
             var pwLen = document.getElementById('pwLen').value;
             if (pwLen < 1 || parseInt(pwLen, 10) === NaN) {
                 pwLen = 1;
             }
-            var password = passwordGenerator(parseInt(pwLen, 10));
+            var password = wordyPass.generate(parseInt(pwLen, 10));
             document.getElementById('pwCtr').innerHTML = password;
             return false;
         };
+        
         document.getElementById('cpyBtn').onclick = function(ev) {
             var textArea = document.getElementById('pwCtr');
             textArea.select();
